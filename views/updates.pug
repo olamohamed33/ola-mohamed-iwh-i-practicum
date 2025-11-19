@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
+    link(rel='stylesheet' href='/css/style.css')
+  body
+    h1 Add Contact / Custom Object
+    a(href='/') Return to the homepage
+    form(action='/update-cobj' method='POST')
+      div
+        label(for='email') Email
+        input(type='email' name='email' id='email' required)
+      div
+        label(for='full_name') Full Name
+        input(type='text' name='full_name' id='full_name')
+      div
+        label(for='bio') Bio
+        input(type='text' name='bio' id='bio')
+      div
+        label(for='other') Other
+        input(type='text' name='other' id='other')
+      div
+        button(type='submit') Create
