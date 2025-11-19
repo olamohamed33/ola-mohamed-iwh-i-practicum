@@ -20,7 +20,8 @@ const hubspot = axios.create({
 
 app.get('/', async (req, res) => {
   try {
-    const props = ['full_name', 'bio', 'other_property', 'email'];
+    const props = ['full_name', 'bio', 'other', 'email'];
+
     const resp = await hubspot.get(`/crm/v3/objects/${COBJ}`, {
       params: {
         properties: props.join(','),
@@ -52,14 +53,15 @@ app.post('/update-cobj', async (req, res) => {
   try {
     const { full_name, bio, other, email } = req.body;
 
-    const body = {
-      properties: {
-        full_name,
-        bio,
-        other_property: other,
-        email
-      }
-    };
+   const body = {
+  properties: {
+    full_name: full_name,
+    bio: bio,
+    other: other,
+    email: email
+  }
+};
+
 
     await hubspot.post(`/crm/v3/objects/${COBJ}`, body);
 
