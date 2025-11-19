@@ -50,7 +50,7 @@ app.get('/update-cobj', (req, res) => {
 
 app.post('/update-cobj', async (req, res) => {
   try {
-    const { full_name, bio, other_property, email } = req.body;
+    const { full_name, bio, other, email } = req.body;
 
     const body = {
       properties: {
