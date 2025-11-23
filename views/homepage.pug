@@ -1,9 +1,25 @@
-link(rel="stylesheet", href="/css/style.css")
 doctype html
 html
   head
-    title HubSpot CRM Integration
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
   body
-    h1 HubSpot CRM Integration Project
-    p This is a simple interface to display and update a contact's information.
-    a(href="/update") Go to Update Page
+    h1= title
+    a(href="/update-cobj") Add to this table
+    if error
+      p(style="color:red")= error
+    if records && records.length
+      table(border="1" cellpadding="6" cellspacing="0")
+        thead
+          tr
+            each p in props
+              th= p
+        tbody
+          each r in records
+            tr
+              each p in props
+                - const v = r.properties && r.properties[p] ? r.properties[p] : ''
+                td= v
+    else
+      p No records found.
